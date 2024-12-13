@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Temizlenecek dizinlerin listesini tanımla
+# Temizlenecek dizinlerin listesi
 directories=(
     "$HOME/.var/app/com.visualstudio.code/cache"
     "$HOME/.var/app/org.mozilla.firefox/cache"
@@ -12,12 +10,14 @@ directories=(
     "$HOME/snap/snap-store/common/.cache"
     "$HOME/.cache"
 )
-# Dizileri sırayla temizle
-for target_dir in "${directories[@]}"; do
-    if [ -d "$target_dir" ]; then
-        # Dizindeki tüm dosyaları ve alt klasörleri sil
-        rm -rf "$target_dir"/*
 
+# Dizileri sırayla temizleme aşaması
+for target_dir in "${directories[@]}";
+do
+    if [ -d "$target_dir" ];
+        then
+        # Dizindeki tüm dosyaları ve alt klasörleri siler
+        rm -rf "$target_dir"/*
     else
         echo "Hata: $target_dir dizini bulunamadı!"
     fi
