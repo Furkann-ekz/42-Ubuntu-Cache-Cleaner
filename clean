@@ -22,4 +22,4 @@ do
         echo "Hata: $target_dir dizini bulunamadı!"
     fi
 done
-echo "Tüm dizinler temizlendi."
+echo "Dizinler temizlendi."
