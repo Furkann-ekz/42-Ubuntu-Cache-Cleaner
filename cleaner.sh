@@ -1,3 +1,4 @@
+clear
 # Temizlenecek dizinlerin listesi
 directories=(
     "$HOME/.var/app/com.visualstudio.code/cache"
@@ -9,8 +10,8 @@ directories=(
     "$HOME/snap/firefox/common/.cache"
     "$HOME/snap/snap-store/common/.cache"
     "$HOME/.var/app/com.brave.Browser/cache"
-    "$HOME/var/app/com.discordapp.Discord/cache"
-    "$HOME/.var/app/com.discordapp.Discord/config/discord/cache"
+    "$HOME/.var/app/com.discordapp.Discord/cache"
+    "$HOME/.var/app/com.discordapp.Discord/config/discord/Cache"
     "$HOME/.var/app/com.google.AndroidStudio/cache"
     "$HOME/.var/app/com.google.Chrome/cache"
     "$HOME/.var/app/com.opera.Opera/cache"
@@ -25,6 +26,7 @@ do
         # Dizindeki tüm dosyaları ve alt klasörleri siler
         rm -rf "$target_dir"/*
     else
+    	echo
         echo "Hata: $target_dir dizini bulunamadı!"
     fi
 done
@@ -36,6 +38,8 @@ then
 	Storage="0B"
 fi
 echo -e "\033[33m\n -- Available Storage Before Cleaning : || $Storage || --\033[0m"
+
+sleep 0.5
 
 echo -e "\033[31m\n -- Cleaning ...\n\033[0m "
 
