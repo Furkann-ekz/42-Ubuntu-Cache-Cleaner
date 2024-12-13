@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Temizlenecek dizinlerin listesini tanımla
+directories=(
+    "$HOME/.var/app/com.visualstudio.code/cache"
+    "$HOME/.var/app/org.mozilla.firefox/cache"
+    "$HOME/.var/app/com.slack.Slack/cache"
+    "$HOME/.cache"
+)
+
+# Dizileri sırayla temizle
+for target_dir in "${directories[@]}"; do
+    if [ -d "$target_dir" ]; then
+        # Dizindeki tüm dosyaları ve alt klasörleri sil
+        rm -rf "$target_dir"/*
+        echo "$target_dir dizini temizlendi."
+    else
+        echo "Hata: $target_dir dizini bulunamadı!"
+    fi
+done
