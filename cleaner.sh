@@ -18,6 +18,18 @@ directories=(
     "$HOME/.cache"
 )
 
+# Temizleme işleminden önce depolama hesaplaması
+Storage=$(df -h "$HOME" | grep "$HOME" | awk '{print($4)}' | tr 'i' 'B')
+if [ "$Storage" == "0BB" ];
+then
+	Storage="0B"
+fi
+echo -e "\033[33m\n -- Available Storage Before Cleaning : || $Storage || --\033[0m"
+
+sleep 0.5
+
+echo -e "\033[31m\n -- Cleaning ...\n\033[0m "
+
 # Dizileri sırayla temizleme aşaması
 for target_dir in "${directories[@]}";
 do
@@ -30,18 +42,6 @@ do
         echo "Hata: $target_dir dizini bulunamadı!"
     fi
 done
-
-# Temizleme işleminden önce depolama hesaplaması
-Storage=$(df -h "$HOME" | grep "$HOME" | awk '{print($4)}' | tr 'i' 'B')
-if [ "$Storage" == "0BB" ];
-then
-	Storage="0B"
-fi
-echo -e "\033[33m\n -- Available Storage Before Cleaning : || $Storage || --\033[0m"
-
-sleep 0.5
-
-echo -e "\033[31m\n -- Cleaning ...\n\033[0m "
 
 # Temizleme işleminden sonra depolama hesaplaması
 Storage=$(df -h "$HOME" | grep "$HOME" | awk '{print($4)}' | tr 'i' 'B')
